@@ -1,5 +1,5 @@
 import NextAuth from "next-auth";
-import type { OAuthConfig, OAuthUserConfig } from "next-auth/providers/oauth";
+import type { OAuthConfig } from "next-auth/providers/oauth";
 
 const BlingProvider = {
   id: "bling",
@@ -9,7 +9,10 @@ const BlingProvider = {
   clientSecret: process.env.BLING_CLIENT_SECRET!,
   authorization: {
     url: "https://www.bling.com.br/Api/v3/oauth/authorize",
-    params: { scope: "conectar" },
+    params: {
+      scope: "conectar",
+      redirect_uri: process.env.BLING_REDIRECT_URI, // ⬅️ importante!
+    },
   },
   token: "https://www.bling.com.br/Api/v3/oauth/token",
   userinfo: "https://www.bling.com.br/Api/v3/usuarios/me",
