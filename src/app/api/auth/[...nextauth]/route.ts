@@ -9,11 +9,12 @@ const BlingProvider = {
   clientId: process.env.BLING_CLIENT_ID!,
   clientSecret: process.env.BLING_CLIENT_SECRET!,
   authorization: {
-  url: "https://www.bling.com.br/Api/v3/oauth/authorize",
-  params: {
-    scope: "conectar",
+    url: "https://www.bling.com.br/Api/v3/oauth/authorize",
+    params: {
+      scope: "conectar",
+      redirect_uri: process.env.BLING_REDIRECT_URI, // ⬅️ importante!
+    },
   },
-},
   token: "https://www.bling.com.br/Api/v3/oauth/token",
   userinfo: "https://www.bling.com.br/Api/v3/usuarios/me",
   profile(profile: any) {
